@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Copyright 2018-2020 Sacha Delanoue
+# Copyright 2018-2021 Sacha Delanoue
 """Generate a C++ parser"""
 
 import textwrap
@@ -124,7 +124,8 @@ class ParserC:
                 self.main.append(indent + "{} = getchar();".format(name))
             self.decl_new_read_line(IntegerOrString.STRING, indent)
         elif type_.main == TypeEnum.STR:
-            self.main.append(indent + 'scanf("%[^\\n]", {});'.format(name))
+            self.main.append(indent + f"{name}[0] = 0;")
+            self.main.append(indent + f'scanf("%[^\\n]", {name});')
             self.decl_new_read_line(IntegerOrString.STRING, indent)
         elif type_.main == TypeEnum.LIST:
             assert type_.encapsulated is not None

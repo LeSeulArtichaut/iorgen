@@ -52,6 +52,7 @@ int main() {
         scanf("%d", &strings[i].size2);
         getchar(); // \n
         strings[i].string_list = (char*)malloc((strings[i].size2 + 1) * sizeof(char));
+        strings[i].string_list[0] = 0;
         scanf("%[^\n]", strings[i].string_list);
     }
     struct matrix* matrices = (struct matrix*)malloc(2 * sizeof(struct matrix));

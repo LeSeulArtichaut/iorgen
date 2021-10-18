@@ -53,6 +53,7 @@ int main() {
         triangle[i].name = getchar();
         getchar(); // \n
         triangle[i].description = (char*)malloc((12 + 1) * sizeof(char));
+        triangle[i].description[0] = 0;
         scanf("%[^\n]", triangle[i].description);
         scanf("%d %d %d", &triangle[i].pos.x, &triangle[i].pos.y, &triangle[i].pos.z);
         getchar(); // \n

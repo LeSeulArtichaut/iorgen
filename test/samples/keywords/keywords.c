@@ -36,6 +36,7 @@ int main() {
     char class = getchar();
     getchar(); // \n
     char* i = (char*)malloc((8 + 1) * sizeof(char));
+    i[0] = 0;
     scanf("%[^\n]", i);
     struct console in;
     scanf("%d %d", &in.a, &in.static_);

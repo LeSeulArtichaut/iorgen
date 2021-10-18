@@ -26,11 +26,13 @@ int main() {
     fgets(list_char, size + 1, stdin);
     getchar(); // \n
     char* string = (char*)malloc((20 + 1) * sizeof(char));
+    string[0] = 0;
     scanf("%[^\n]", string);
     getchar(); // \n
     char** list_string4 = (char**)malloc(size * sizeof(char*));
     for (int i = 0; i < size; ++i) {
         list_string4[i] = (char*)malloc((4 + 1) * sizeof(char));
+        list_string4[i][0] = 0;
         scanf("%[^\n]", list_string4[i]);
         getchar(); // \n
     }
@@ -39,6 +41,7 @@ int main() {
         list_list_string2[i] = (char**)malloc(2 * sizeof(char*));
         for (int j = 0; j < 2; ++j) {
             list_list_string2[i][j] = (char*)malloc((2 + 1) * sizeof(char));
+            list_list_string2[i][j][0] = 0;
             scanf("%[^\n]", list_list_string2[i][j]);
             getchar(); // \n
         }
