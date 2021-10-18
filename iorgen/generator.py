@@ -60,6 +60,7 @@ class Language:
                 stderr=stderr,
                 cwd=os.path.dirname(filename),
                 check=True,
+                shell=True,
             )
             return name
         return filename
@@ -94,25 +95,26 @@ ALL_LANGUAGES = [
         "cpp", gen_cpp, ["g++", "-std=c++17", "-Wall", "-Wextra", "-O2", "-o", "{name}"]
     ),
     Language("cs", gen_csharp, ["mcs", "-optimize", "-out:{name}"], ["mono"]),
-    Language("d", gen_d, ["gdc", "-Wall", "-O2", "-o", "{name}"]),
+    # Language("d", gen_d, ["gdc", "-Wall", "-O2", "-o", "{name}"]),
     Language("go", gen_go, ["go", "build", "-buildmode=exe"]),
     Language(
         "hs",
         gen_haskell,
-        ["ghc", "-v0", "-Wall", "-Wno-name-shadowing", "-dynamic", "-O2"],
+        ["ghc", "-v0", "-Wall", "-Wno-name-shadowing", "-O2"],
+        # https://gitlab.haskell.org/ghc/ghc/-/wikis/windows-dynamic-linking
     ),
     Language("java", gen_java, ["javac", "-encoding", "UTF-8"], ["java", "Main"]),
     Language("js", gen_javascript, [], ["node"]),
     Language("lua", gen_lua, [], ["lua"]),
-    Language("ml", gen_ocaml, ["ocamlopt", "-w", "A-24", "-o", "{name}"]),
+    # Language("ml", gen_ocaml, ["ocamlopt", "-w", "A-24", "-o", "{name}"]),
     Language("pas", gen_pascal, ["fpc", "-v0ew", "-l-"], no_stderr=True),
     Language("php", gen_php, [], ["php"]),
     Language("pl", gen_perl, [], ["perl"]),
     Language("pro", gen_prolog, [], ["swipl", "--quiet", "-t", "halt", "-l"]),
-    Language("py", gen_python, [], ["python3", "-S"]),
+    Language("py", gen_python, [], ["python", "-S"]),
     Language("rb", gen_ruby, [], ["ruby"]),
     Language("rs", gen_rust, ["rustc", "-W", "warnings", "-O"]),
-    Language("scm", gen_scheme, [], ["gsi"]),
+    # Language("scm", gen_scheme, [], ["gsi"]),
 ]
 
 ALL_MARKDOWN = [
